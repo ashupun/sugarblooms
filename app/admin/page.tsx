@@ -12,13 +12,7 @@ export default function AdminLogin() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // This is a simple example. In a real application, you should:
-    // 1. Use proper authentication (like NextAuth.js)
-    // 2. Never store credentials in the code
-    // 3. Use HTTPS
-    // 4. Implement proper session management
     if (username === "admin" && password === "sugarbloomsadmin") {
-      // Store authentication state (use a proper auth solution in production)
       sessionStorage.setItem("isAdminAuthenticated", "true");
       window.location.href = "/admin/dashboard";
     } else {
@@ -27,14 +21,14 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-50 to-rose-50 pt-32 pb-20">
-      <div className="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-xl border-2 border-pink-200 max-w-md w-full">
-        <h1 className="text-3xl font-bold text-pink-600 mb-8 text-center font-serif">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 pt-40 pb-20">
+      <div className="bg-white p-8 md:p-12 rounded-xl shadow-soft border border-gray-100 max-w-md w-full">
+        <h1 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
           Admin Login
         </h1>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700">
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-lg text-red-600 text-sm">
             {error}
           </div>
         )}
@@ -43,7 +37,7 @@ export default function AdminLogin() {
           <div className="space-y-2">
             <label
               htmlFor="username"
-              className="text-sm font-medium text-pink-600"
+              className="text-sm font-medium text-gray-700"
             >
               Username
             </label>
@@ -52,7 +46,7 @@ export default function AdminLogin() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="border-pink-200 focus:border-pink-400 text-pink-700"
+              className="border-gray-200 focus:border-pink-400 focus:ring-pink-400"
               required
             />
           </div>
@@ -60,7 +54,7 @@ export default function AdminLogin() {
           <div className="space-y-2">
             <label
               htmlFor="password"
-              className="text-sm font-medium text-pink-600"
+              className="text-sm font-medium text-gray-700"
             >
               Password
             </label>
@@ -69,14 +63,14 @@ export default function AdminLogin() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="border-pink-200 focus:border-pink-400 text-pink-700"
+              className="border-gray-200 focus:border-pink-400 focus:ring-pink-400"
               required
             />
           </div>
 
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-medium"
+            className="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium rounded-lg"
           >
             Login
           </Button>

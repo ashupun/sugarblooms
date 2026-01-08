@@ -12,48 +12,11 @@ import {
 import { useState } from "react";
 import Head from "next/head";
 
-const ClickableAccordionContent = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => (
-  <div
-    onClick={(e) => {
-      const trigger = e.currentTarget.closest("[data-state]");
-      if (trigger) {
-        (trigger as HTMLElement).click();
-      }
-    }}
-    className="cursor-pointer"
-  >
-    <AccordionContent>{children}</AccordionContent>
-  </div>
-);
-
 interface FAQSubmission {
   name: string;
   email: string;
   question: string;
 }
-
-// Initial FAQ data - later this will come from your database
-interface ClickableAccordionProps {
-  children: React.ReactNode;
-  value: string;
-  onToggle: (value: string) => void;
-}
-
-const ClickableAccordion: React.FC<ClickableAccordionProps> = ({
-  children,
-  value,
-  onToggle,
-}) => {
-  return (
-    <div className="cursor-pointer" onClick={() => onToggle(value)}>
-      {children}
-    </div>
-  );
-};
 
 const initialFaqs = [
   {
@@ -64,7 +27,7 @@ const initialFaqs = [
   {
     question: "Do you offer delivery?",
     answer:
-      "We currently offer collection only from our location in Colindale, Barnet NW9. We ensure your treats are carefully packaged for safe transport.",
+      "We currently offer collection only from our location in Derry, Northern Ireland. We ensure your treats are carefully packaged for safe transport.",
   },
   {
     question: "What's your minimum order quantity?",
@@ -98,17 +61,8 @@ export default function FAQPage() {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically send this to your API
-      // await fetch('/api/faq-submissions', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
-
       setShowSuccess(true);
       setFormData({ name: "", email: "", question: "" });
-
-      // Hide success message after 5 seconds
       setTimeout(() => setShowSuccess(false), 5000);
     } catch (error) {
       console.error("Error submitting question:", error);
@@ -127,17 +81,26 @@ export default function FAQPage() {
         />
         <meta
           name="keywords"
-          content="FAQ, questions, Sugar Blooms, London bakery"
+          content="FAQ, questions, Sugar Blooms, Derry bakery, Northern Ireland"
         />
       </Head>
       <div className="min-h-screen pt-40 pb-20">
+        <section className="pt-8 pb-18 px-4 relative">
+          <div className="container mx-auto text-center relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-6">
+                <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">
+                  Frequently Asked Questions
+                </h1>
+              </div>
+              <p className="text-base md:text-lg text-gray-600 mb-8 font-light leading-relaxed max-w-2xl mx-auto">
+                Find answers to common questions about our cupcakes and ordering
+              </p>
+            </div>
+          </div>
+        </section>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold text-pink-600 text-center mb-8 font-serif">
-              Frequently Asked Questions
-            </h1>
-
-            {/* FAQ Section */}
             <section className="mb-16">
               <Accordion
                 type="multiple"
@@ -149,8 +112,8 @@ export default function FAQPage() {
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
-                    className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-4 cursor-pointer"
-                    onClick={(e) => {
+                    className="bg-white border border-gray-200 rounded-2xl px-4 cursor-pointer"
+                    onClick={() => {
                       const newValue = `item-${index}`;
                       if (openItems.includes(newValue)) {
                         setOpenItems(
@@ -161,10 +124,10 @@ export default function FAQPage() {
                       }
                     }}
                   >
-                    <AccordionTrigger className="text-pink-600 hover:text-pink-700 text-left">
+                    <AccordionTrigger className="text-gray-900 hover:text-pink-600 text-left">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-pink-700">
+                    <AccordionContent className="text-gray-600">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -172,9 +135,8 @@ export default function FAQPage() {
               </Accordion>
             </section>
 
-            {/* Terms and Conditions Section */}
             <section className="mb-16">
-              <h2 className="text-2xl font-bold text-pink-600 mb-6 font-serif text-center">
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 text-center">
                 Terms and Conditions
               </h2>
               <Accordion
@@ -185,7 +147,7 @@ export default function FAQPage() {
               >
                 <AccordionItem
                   value="orders"
-                  className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-4 cursor-pointer"
+                  className="bg-white border border-gray-200 rounded-2xl px-4 cursor-pointer"
                   onClick={() => {
                     const value = "orders";
                     if (openItems.includes(value)) {
@@ -195,15 +157,15 @@ export default function FAQPage() {
                     }
                   }}
                 >
-                  <AccordionTrigger className="text-pink-600 hover:text-pink-700 text-left">
+                  <AccordionTrigger className="text-gray-900 hover:text-pink-600 text-left">
                     1. Orders and Collection
                   </AccordionTrigger>
-                  <AccordionContent className="text-pink-700">
+                  <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-2">
                       <li>Minimum order of 4 cupcakes required</li>
                       <li>24-48 hours notice required for all orders</li>
                       <li>
-                        Collection only from our Colindale, Barnet NW9 location
+                        Collection only from our Derry, Northern Ireland location
                       </li>
                       <li>Order confirmation is subject to availability</li>
                     </ul>
@@ -212,7 +174,7 @@ export default function FAQPage() {
 
                 <AccordionItem
                   value="payment"
-                  className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-4 cursor-pointer"
+                  className="bg-white border border-gray-200 rounded-2xl px-4 cursor-pointer"
                   onClick={() => {
                     const value = "payment";
                     if (openItems.includes(value)) {
@@ -222,10 +184,10 @@ export default function FAQPage() {
                     }
                   }}
                 >
-                  <AccordionTrigger className="text-pink-600 hover:text-pink-700 text-left">
+                  <AccordionTrigger className="text-gray-900 hover:text-pink-600 text-left">
                     2. Payment and Cancellations
                   </AccordionTrigger>
-                  <AccordionContent className="text-pink-700">
+                  <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-2">
                       <li>Full payment required to confirm orders</li>
                       <li>
@@ -239,7 +201,7 @@ export default function FAQPage() {
 
                 <AccordionItem
                   value="allergens"
-                  className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-4 cursor-pointer"
+                  className="bg-white border border-gray-200 rounded-2xl px-4 cursor-pointer"
                   onClick={() => {
                     const value = "allergens";
                     if (openItems.includes(value)) {
@@ -249,10 +211,10 @@ export default function FAQPage() {
                     }
                   }}
                 >
-                  <AccordionTrigger className="text-pink-600 hover:text-pink-700 text-left">
+                  <AccordionTrigger className="text-gray-900 hover:text-pink-600 text-left">
                     3. Allergen Information
                   </AccordionTrigger>
-                  <AccordionContent className="text-pink-700">
+                  <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-2">
                       <li>
                         Our kitchen handles common allergens including nuts,
@@ -266,7 +228,7 @@ export default function FAQPage() {
 
                 <AccordionItem
                   value="products"
-                  className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-4 cursor-pointer"
+                  className="bg-white border border-gray-200 rounded-2xl px-4 cursor-pointer"
                   onClick={() => {
                     const value = "products";
                     if (openItems.includes(value)) {
@@ -276,10 +238,10 @@ export default function FAQPage() {
                     }
                   }}
                 >
-                  <AccordionTrigger className="text-pink-600 hover:text-pink-700 text-left">
+                  <AccordionTrigger className="text-gray-900 hover:text-pink-600 text-left">
                     4. Product Information
                   </AccordionTrigger>
-                  <AccordionContent className="text-pink-700">
+                  <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-2">
                       <li>All products are freshly baked to order</li>
                       <li>Best consumed within 48 hours of collection</li>
@@ -293,7 +255,7 @@ export default function FAQPage() {
 
                 <AccordionItem
                   value="quality"
-                  className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-4 cursor-pointer"
+                  className="bg-white border border-gray-200 rounded-2xl px-4 cursor-pointer"
                   onClick={() => {
                     const value = "quality";
                     if (openItems.includes(value)) {
@@ -303,10 +265,10 @@ export default function FAQPage() {
                     }
                   }}
                 >
-                  <AccordionTrigger className="text-pink-600 hover:text-pink-700 text-left">
+                  <AccordionTrigger className="text-gray-900 hover:text-pink-600 text-left">
                     5. Quality Commitment
                   </AccordionTrigger>
-                  <AccordionContent className="text-pink-700">
+                  <AccordionContent className="text-gray-600">
                     <ul className="list-disc pl-5 space-y-2">
                       <li>
                         All products are made with high-quality ingredients
@@ -321,16 +283,15 @@ export default function FAQPage() {
                 </AccordionItem>
               </Accordion>
 
-              <div className="mt-6 text-sm text-pink-600 italic text-center">
+              <div className="mt-6 text-sm text-gray-500 italic text-center">
                 By placing an order with Sugar Blooms, you agree to these terms
                 and conditions. These terms are subject to change without
                 notice.
               </div>
             </section>
 
-            {/* Question Submission Form */}
-            <section className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl p-6 md:p-8">
-              <h2 className="text-2xl font-bold text-pink-600 mb-6 font-serif">
+            <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
                 Ask a Question
               </h2>
 
@@ -346,7 +307,7 @@ export default function FAQPage() {
                   <div className="space-y-2">
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-pink-600"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Name
                     </label>
@@ -357,14 +318,14 @@ export default function FAQPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="border-pink-200 focus:border-pink-400 text-pink-700 placeholder:text-pink-300"
+                      className="border-gray-300 focus:border-pink-400 focus:ring-pink-400 text-gray-700 placeholder:text-gray-400"
                       placeholder="Your name"
                     />
                   </div>
                   <div className="space-y-2">
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-pink-600"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Email
                     </label>
@@ -376,7 +337,7 @@ export default function FAQPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="border-pink-200 focus:border-pink-400 text-pink-700 placeholder:text-pink-300"
+                      className="border-gray-300 focus:border-pink-400 focus:ring-pink-400 text-gray-700 placeholder:text-gray-400"
                       placeholder="Your email"
                     />
                   </div>
@@ -384,7 +345,7 @@ export default function FAQPage() {
                 <div className="space-y-2">
                   <label
                     htmlFor="question"
-                    className="block text-sm font-medium text-pink-600"
+                    className="block text-sm font-medium text-gray-700"
                   >
                     Your Question
                   </label>
@@ -395,14 +356,14 @@ export default function FAQPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, question: e.target.value })
                     }
-                    className="min-h-[100px] border-pink-200 focus:border-pink-400 text-pink-700 placeholder:text-pink-300"
+                    className="min-h-[100px] border-gray-300 focus:border-pink-400 focus:ring-pink-400 text-gray-700 placeholder:text-gray-400"
                     placeholder="What would you like to know?"
                   />
                 </div>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full md:w-auto bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-medium px-8"
+                  className="w-full md:w-auto bg-pink-600 hover:bg-pink-700 text-white font-medium px-8 rounded-full"
                 >
                   {isSubmitting ? "Submitting..." : "Submit Question"}
                 </Button>

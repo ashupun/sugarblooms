@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import {
@@ -12,12 +12,11 @@ import {
   Heart,
   ArrowRightLeft,
 } from "lucide-react";
-import { BowBackground } from "@/components/BowBackground";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SearchOverlay } from "@/components/ui/search-overlay";
 import { useState, useEffect, useRef } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export default function ClientLayout({
   children,
@@ -117,10 +116,9 @@ export default function ClientLayout({
         </style>
       </head>
       <body
-        className={inter.className}
+        className={dmSans.className}
         onContextMenu={(e) => e.preventDefault()}
       >
-        <BowBackground />
         <div className="min-h-screen relative z-10">
           {/* Navigation */}
           <header
@@ -128,20 +126,20 @@ export default function ClientLayout({
               isVisible ? "top-0 opacity-100" : "-top-24 opacity-0"
             }`}
           >
-            <div className="bg-gradient-to-r from-pink-400 to-rose-400 text-white text-center py-1 text-sm font-medium">
-              Grand Opening: September 1st, 2025 ｜ 20% off first orders!
+            <div className="bg-pink-600 text-white text-center py-2 text-sm font-medium tracking-wide">
+              Grand Opening: August 1st, 2026 | 20% off first orders!
             </div>
-            <nav className="bg-white border-b border-gray-200 px-2 md:px-10 py-1 shadow-sm relative">
+            <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-100 px-2 md:px-10 py-1">
               <div className="flex items-center relative w-full max-w-7xl mx-auto">
                 <button
                   ref={menuButtonRef}
                   onClick={toggleMenu}
-                  className="absolute left-0 p-2 md:p-3 -ml-1 text-pink-600 hover:text-pink-800 transition-colors rounded-full hover:bg-pink-50"
+                  className="absolute left-0 p-2 -ml-1 text-gray-600 hover:text-pink-600 transition-colors rounded-full hover:bg-gray-50 md:hidden"
                 >
                   {isMenuOpen ? (
-                    <X className="w-5 h-5 md:w-7 md:h-7" />
+                    <X className="w-5 h-5" />
                   ) : (
-                    <Menu className="w-5 h-5 md:w-7 md:h-7" />
+                    <Menu className="w-5 h-5" />
                   )}
                 </button>
                 <div className="flex items-center justify-center w-full">
@@ -157,127 +155,93 @@ export default function ClientLayout({
                 </div>
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="absolute right-0 p-2 md:p-3 -mr-1 text-pink-600 hover:text-pink-800 transition-colors rounded-full hover:bg-pink-50"
+                  className="absolute right-0 p-2 md:p-3 -mr-1 text-gray-600 hover:text-pink-600 transition-colors rounded-full hover:bg-gray-50"
                 >
-                  <Search className="w-5 h-5 md:w-7 md:h-7" />
+                  <Search className="w-5 h-5 md:w-6 md:h-6" />
                 </button>
               </div>
 
-              {/* Dropdown Menu */}
+              <div className="hidden md:flex items-center justify-center gap-12 py-2">
+                <a href="/" className="text-base text-gray-700 hover:text-pink-600 font-medium transition-colors uppercase tracking-wider">
+                  Home
+                </a>
+                <a href="/cupcakes" className="text-base text-gray-700 hover:text-pink-600 font-medium transition-colors uppercase tracking-wider">
+                  Cupcakes
+                </a>
+                <a href="/about" className="text-base text-gray-700 hover:text-pink-600 font-medium transition-colors uppercase tracking-wider">
+                  About
+                </a>
+                <a href="/recipes" className="text-base text-gray-700 hover:text-pink-600 font-medium transition-colors uppercase tracking-wider">
+                  Recipes
+                </a>
+                <a href="/contact" className="text-base text-gray-700 hover:text-pink-600 font-medium transition-colors uppercase tracking-wider">
+                  Contact
+                </a>
+              </div>
+
               <div
                 ref={menuRef}
-                className={`absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-sm overflow-hidden transform transition-all duration-300 ease-out ${
-                  isMenuOpen
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 -translate-y-2 pointer-events-none"
+                className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+                  isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                <div
-                  className={`flex flex-col items-center ${
-                    isMenuOpen ? "animate-[slideDown_0.2s_ease-out]" : ""
-                  }`}
-                >
+                <div className="flex flex-col items-center border-t border-gray-100 mt-1">
                   <a
                     href="/"
-                    className="w-full text-center px-6 py-3 text-pink-600 hover:text-pink-800 hover:bg-pink-50 font-medium transition-colors"
+                    className="w-full text-center px-6 py-3 text-base text-gray-700 hover:text-pink-600 hover:bg-gray-50 font-medium transition-colors uppercase tracking-wider"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Home
                   </a>
                   <a
                     href="/cupcakes"
-                    className="w-full text-center px-6 py-3 text-pink-600 hover:text-pink-800 hover:bg-pink-50 font-medium transition-colors"
+                    className="w-full text-center px-6 py-3 text-base text-gray-700 hover:text-pink-600 hover:bg-gray-50 font-medium transition-colors uppercase tracking-wider"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Cupcakes
                   </a>
                   <a
                     href="/about"
-                    className="w-full text-center px-6 py-3 text-pink-600 hover:text-pink-800 hover:bg-pink-50 font-medium transition-colors"
+                    className="w-full text-center px-6 py-3 text-base text-gray-700 hover:text-pink-600 hover:bg-gray-50 font-medium transition-colors uppercase tracking-wider"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     About
                   </a>
                   <a
                     href="/recipes"
-                    className="w-full text-center px-6 py-3 text-pink-600 hover:text-pink-800 hover:bg-pink-50 font-medium transition-colors"
+                    className="w-full text-center px-6 py-3 text-base text-gray-700 hover:text-pink-600 hover:bg-gray-50 font-medium transition-colors uppercase tracking-wider"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Recipes
                   </a>
                   <a
                     href="/contact"
-                    className="w-full text-center px-6 py-3 text-pink-600 hover:text-pink-800 hover:bg-pink-50 font-medium transition-colors"
+                    className="w-full text-center px-6 py-3 text-base text-gray-700 hover:text-pink-600 hover:bg-gray-50 font-medium transition-colors uppercase tracking-wider"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Contact
                   </a>
-                  <div className="w-full mt-2 pb-2">
-                    <div className="flex justify-center space-x-4">
-                      <a
-                        href="https://instagram.com/sugarbloomsco"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 text-pink-600 hover:text-pink-800 transition-colors"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <Instagram className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://tiktok.com/@sugarbloomsco"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 text-pink-600 hover:text-pink-800 transition-colors"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                        </svg>
-                      </a>
-                      <a
-                        href="https://www.facebook.com/profile.php?id=61578928634971"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 text-pink-600 hover:text-pink-800 transition-colors"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
                 </div>
               </div>
             </nav>
           </header>
           {children}
-          <footer className="bg-pink-100/90 backdrop-blur-sm py-12 px-4 border-t-2 border-pink-200">
-            <div className="container mx-auto">
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                {/* Left Section */}
+          <footer className="bg-gray-50 py-16 px-4 border-t border-gray-100">
+            <div className="container mx-auto max-w-6xl">
+              <div className="grid md:grid-cols-3 gap-12 mb-12">
                 <div className="flex flex-col">
-                  <h3 className="text-2xl font-serif font-bold text-pink-600 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
                     Sugar Blooms
                   </h3>
-                  <p className="text-pink-700 text-lg mb-4">
-                    See our socials below, we'd love if you could leave a
-                    review!
+                  <p className="text-gray-500 mb-6 leading-relaxed">
+                    Handcrafted cupcakes made with love in Derry, Northern Ireland.
                   </p>
-                  <div className="flex gap-4 mb-6">
+                  <div className="flex gap-3">
                     <a
                       href="https://instagram.com/sugarbloomsco"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-pink-600 hover:text-pink-800 transition-colors"
+                      className="w-10 h-10 rounded-full bg-pink-600 hover:bg-pink-700 flex items-center justify-center text-white shadow-md transition-all"
                     >
                       <Instagram className="w-5 h-5" />
                     </a>
@@ -285,13 +249,9 @@ export default function ClientLayout({
                       href="https://tiktok.com/@sugarbloomsco"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-pink-600 hover:text-pink-800 transition-colors"
+                      className="w-10 h-10 rounded-full bg-pink-600 hover:bg-pink-700 flex items-center justify-center text-white shadow-md transition-all"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                       </svg>
                     </a>
@@ -299,121 +259,46 @@ export default function ClientLayout({
                       href="https://www.facebook.com/profile.php?id=61578928634971"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-pink-600 hover:text-pink-800 transition-colors"
+                      className="w-10 h-10 rounded-full bg-pink-600 hover:bg-pink-700 flex items-center justify-center text-white shadow-md transition-all"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                       </svg>
                     </a>
                   </div>
-                  <div className="flex flex-col">
-                    <h3 className="text-2xl font-serif font-bold text-pink-600 mb-4">
-                      My Apps
-                    </h3>
-                    <div className="flex flex-col gap-2">
-                      <a
-                        href="/calculator"
-                        className="text-pink-700 hover:text-pink-800 transition-colors text-lg flex items-center gap-2"
-                      >
-                        <ArrowRightLeft className="w-5 h-5 text-pink-600" />
-                        Baking Calculator
-                      </a>
-                      <a
-                        href="/recommendations"
-                        className="text-pink-700 hover:text-pink-800 transition-colors text-lg flex items-center gap-2"
-                      >
-                        <Heart className="w-5 h-5 text-pink-600" />
-                        Product Recommendations
-                      </a>
-                    </div>
-                  </div>
                 </div>
-
-                {/* Right Section - Quick Links */}
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-pink-600 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
                     Quick Links
                   </h3>
-                  <nav className="flex flex-col space-y-3">
-                    <a
-                      href="/"
-                      className="text-pink-700 hover:text-pink-800 transition-colors text-lg"
-                    >
-                      Home
+                  <nav className="flex flex-col space-y-2.5">
+                    <a href="/" className="text-gray-500 hover:text-pink-600 transition-colors">Home</a>
+                    <a href="/cupcakes" className="text-gray-500 hover:text-pink-600 transition-colors">Cupcakes</a>
+                    <a href="/about" className="text-gray-500 hover:text-pink-600 transition-colors">About</a>
+                    <a href="/recipes" className="text-gray-500 hover:text-pink-600 transition-colors">Recipes</a>
+                    <a href="/contact" className="text-gray-500 hover:text-pink-600 transition-colors">Contact</a>
+                    <a href="/faq" className="text-gray-500 hover:text-pink-600 transition-colors">FAQs</a>
+                  </nav>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    Tools
+                  </h3>
+                  <nav className="flex flex-col space-y-2.5">
+                    <a href="/calculator" className="text-gray-500 hover:text-pink-600 transition-colors flex items-center gap-2">
+                      <ArrowRightLeft className="w-4 h-4 text-pink-300" />
+                      Baking Calculator
                     </a>
-                    <a
-                      href="/cupcakes"
-                      className="text-pink-700 hover:text-pink-800 transition-colors text-lg"
-                    >
-                      Cupcakes
-                    </a>
-                    <a
-                      href="/about"
-                      className="text-pink-700 hover:text-pink-800 transition-colors text-lg"
-                    >
-                      About
-                    </a>
-                    <a
-                      href="/recipes"
-                      className="text-pink-700 hover:text-pink-800 transition-colors text-lg"
-                    >
-                      Recipes
-                    </a>
-                    <a
-                      href="/contact"
-                      className="text-pink-700 hover:text-pink-800 transition-colors text-lg"
-                    >
-                      Contact
-                    </a>
-                    <a
-                      href="/faq"
-                      className="text-pink-700 hover:text-pink-800 transition-colors text-lg"
-                    >
-                      FAQs + T&Cs
+                    <a href="/recommendations" className="text-gray-500 hover:text-pink-600 transition-colors flex items-center gap-2">
+                      <Heart className="w-4 h-4 text-pink-300" />
+                      Recommendations
                     </a>
                   </nav>
                 </div>
               </div>
-
-              {/* Newsletter Section */}
-              {/* <div className="border-t border-pink-200 pt-8 pb-8">
-                <div>
-                  <h3 className="text-3xl font-serif font-bold text-pink-600 mb-4">
-                    Subscribe to Our Newsletter
-                  </h3>
-                  <p className="text-pink-700 text-lg mb-4">
-                    Stay updated with our weekly discount codes, seasonal specials, and exclusive offers.
-                  </p>
-                  <div className="space-y-4">
-                    <form>
-                      <div className="flex gap-2 max-w-md">
-                        <input
-                          type="email"
-                          placeholder="Enter your email"
-                          className="flex-1 px-4 py-2 rounded-full border-2 border-pink-200 focus:border-pink-400 focus:outline-none text-pink-700 placeholder:text-pink-300"
-                        />
-                        <button
-                          type="submit"
-                          className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-medium px-6 py-2 rounded-full shadow-lg transform hover:scale-105 transition-all whitespace-nowrap"
-                        >
-                          Subscribe
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div> */}
-
-              {/* Bottom Section - Existing Content */}
-              <div className="border-t border-pink-200 pt-8 text-center">
-                <p className="text-pink-600 mb-4 text-lg font-medium">
-                  Made with Love and Lots of Sugar
-                </p>
-                <p className="text-pink-700 text-lg">© 2025 Sugar Blooms Co.</p>
+              <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-gray-400 text-sm">© 2025 Sugar Blooms Co.</p>
+                <p className="text-pink-600 text-sm font-medium">Made with love</p>
               </div>
             </div>
           </footer>

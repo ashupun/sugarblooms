@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { BowBackground } from "@/components/BowBackground";
 import Head from "next/head";
 
 export default function Calculator() {
@@ -142,7 +141,7 @@ export default function Calculator() {
   };
 
   return (
-    <main className="relative z-10 min-h-screen pt-40 pb-20 flex items-center justify-center">
+    <main className="relative z-10 min-h-screen pt-40 pb-20">
       <Head>
         <title>Baking Calculator | Sugar Blooms</title>
         <meta
@@ -167,34 +166,33 @@ export default function Calculator() {
         />
         <meta property="og:type" content="website" />
       </Head>
-      <BowBackground />
-      <div className="container mx-auto text-center max-w-xl space-y-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-pink-600 font-serif mb-6">
-          My Baking Calculator
-        </h1>
-        <p className="text-base md:text-lg text-pink-700/80 mb-8 font-light leading-relaxed max-w-2xl mx-auto">
-          Convert units for your favorite baking ingredients with precision and
-          ease.
-        </p>
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <div className="h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent flex-1 max-w-20" />
-          <span className="text-pink-500 text-sm font-medium">
-            Simplify Your Baking Measurements
-          </span>
-          <div className="h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent flex-1 max-w-20" />
+      <section className="pt-8 pb-18 px-4 relative">
+        <div className="container mx-auto text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-6">
+              <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">
+                Baking Calculator
+              </h1>
+            </div>
+            <p className="text-base md:text-lg text-gray-600 mb-8 font-light leading-relaxed max-w-2xl mx-auto">
+              Convert units for your favorite baking ingredients with precision and ease
+            </p>
+          </div>
         </div>
-        <div className="bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl border-2 border-pink-200">
+      </section>
+      <div className="container mx-auto px-4 max-w-xl">
+        <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
           <form className="space-y-6" onSubmit={handleConvert}>
             <div className="mb-4">
               <label
                 htmlFor="ingredient"
-                className="block text-pink-600 font-medium mb-2"
+                className="block text-gray-700 font-medium mb-2"
               >
                 Select Ingredient
               </label>
               <select
                 id="ingredient"
-                className="w-full border border-pink-300 rounded-lg p-3 bg-pink-100 text-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full border border-gray-300 rounded-lg p-3 bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
               >
                 <option value="plain_flour">Plain Flour</option>
                 <option value="caster_sugar">Caster Sugar</option>
@@ -212,13 +210,13 @@ export default function Calculator() {
               <div>
                 <label
                   htmlFor="unit1"
-                  className="block text-pink-600 font-medium mb-2"
+                  className="block text-gray-700 font-medium mb-2"
                 >
                   From
                 </label>
                 <select
                   id="unit1"
-                  className="w-full border border-pink-300 rounded-lg p-3 bg-pink-100 text-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  className="w-full border border-gray-300 rounded-lg p-3 bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
                   defaultValue="cup"
                 >
                   <option value="cup">Cup</option>
@@ -232,13 +230,13 @@ export default function Calculator() {
               <div>
                 <label
                   htmlFor="unit2"
-                  className="block text-pink-600 font-medium mb-2"
+                  className="block text-gray-700 font-medium mb-2"
                 >
                   To
                 </label>
                 <select
                   id="unit2"
-                  className="w-full border border-pink-300 rounded-lg p-3 bg-pink-100 text-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  className="w-full border border-gray-300 rounded-lg p-3 bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
                   defaultValue="grams"
                 >
                   <option value="cup">Cup</option>
@@ -253,7 +251,7 @@ export default function Calculator() {
             <div className="mb-4">
               <label
                 htmlFor="value"
-                className="block text-pink-600 font-medium mb-2"
+                className="block text-gray-700 font-medium mb-2"
               >
                 Enter Value to Convert
               </label>
@@ -261,19 +259,19 @@ export default function Calculator() {
                 type="number"
                 id="value"
                 placeholder="e.g., 1"
-                className="w-full border border-pink-300 rounded-lg p-3 bg-pink-100 text-pink-700 placeholder-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full border border-gray-300 rounded-lg p-3 bg-gray-50 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400"
               />
             </div>
 
             <button
               type="submit"
-              className="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:from-pink-600 hover:to-rose-600 transition-all"
+              className="bg-pink-600 hover:bg-pink-700 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all"
             >
               Convert
             </button>
           </form>
-          <div className="mt-6 p-4 bg-pink-50 border border-pink-300 rounded-lg shadow-md">
-            <p className="text-pink-700 font-medium text-md">
+          <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm">
+            <p className="text-gray-700 font-medium text-base">
               {result || "Waiting for input..."}
             </p>
           </div>

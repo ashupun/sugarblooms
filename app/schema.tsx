@@ -14,17 +14,17 @@ export const businessSchema = {
   priceRange: "££",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "London",
-    addressRegion: "Greater London",
+    addressLocality: "Derry",
+    addressRegion: "Northern Ireland",
     addressCountry: "GB",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "51.5074",
-    longitude: "-0.1278",
+    latitude: "54.9966",
+    longitude: "-7.3086",
   },
   description:
-    "Sugar Blooms is a London-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
+    "Sugar Blooms is a Derry-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
   hasMenu: {
     "@type": "Menu",
     hasMenuSection: [
@@ -72,7 +72,6 @@ export const businessSchema = {
   ],
 };
 
-// Ensure the schema file is a valid module
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -80,7 +79,7 @@ export const websiteSchema = {
   url: "https://sugarblooms.co.uk",
   name: "Sugar Blooms",
   description:
-    "Sugar Blooms is a London-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
+    "Sugar Blooms is a Derry-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
   publisher: {
     "@type": "Organization",
     name: "Sugar Blooms",

@@ -53,16 +53,16 @@ export default function RecommendationsPage() {
           content="baking tools, recommendations, Sugar Blooms"
         />
       </Head>
-      <div className="min-h-screen pt-32 pb-20">
+      <div className="min-h-screen pt-40 pb-20">
         <section className="pt-8 pb-18 px-4 relative">
           <div className="container mx-auto text-center relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="mb-6">
-                <h1 className="text-3xl md:text-4xl font-bold text-pink-600 font-serif">
+                <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">
                   My Favourite Baking Tools
                 </h1>
               </div>
-              <p className="text-base md:text-lg text-pink-700/80 mb-8 font-light leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-gray-600 mb-8 font-light leading-relaxed max-w-2xl mx-auto">
                 Here are some of my favorite tools that make baking a joy.
               </p>
             </div>
@@ -73,7 +73,7 @@ export default function RecommendationsPage() {
             {recommendations.map((item, index) => (
               <div
                 key={index}
-                className="bg-white/90 backdrop-blur-sm border-3 border-pink-200 rounded-3xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 hover:-translate-y-3 relative overflow-hidden w-full"
+                className="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden w-full"
                 style={{ maxWidth: "350px", margin: "0 auto" }}
               >
                 <div className="relative overflow-hidden">
@@ -82,21 +82,21 @@ export default function RecommendationsPage() {
                     alt={item.name}
                     width={400}
                     height={300}
-                    className="w-full h-64 object-cover transition-transform hover:scale-110"
+                    className="w-full h-64 object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-pink-600 mb-2 font-serif">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {item.name}
                   </h3>
-                  <p className="text-pink-700 text-sm mb-4 leading-relaxed">
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                     {item.description}
                   </p>
                   <a
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold rounded-full py-3 text-center shadow-lg transform hover:scale-105 transition-all"
+                    className="block w-full bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-full py-3 text-center shadow-md transition-colors"
                   >
                     View Product
                   </a>
@@ -106,7 +106,7 @@ export default function RecommendationsPage() {
                         href="https://www.4kenwood.co.uk/product.pl?pid=5354461"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full bg-gradient-to-r from-pink-200 to-pink-300 hover:from-pink-300 hover:to-pink-400 text-pink-800 font-bold rounded-full py-2 text-center shadow-md transform hover:scale-105 transition-all"
+                        className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-full py-2 text-center transition-colors"
                       >
                         Glass Bowl
                       </a>
@@ -114,7 +114,7 @@ export default function RecommendationsPage() {
                         href="https://www.4kenwood.co.uk/product.pl?pid=5241478"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full bg-gradient-to-r from-pink-200 to-pink-300 hover:from-pink-300 hover:to-pink-400 text-pink-800 font-bold rounded-full py-2 text-center shadow-md transform hover:scale-105 transition-all"
+                        className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-full py-2 text-center transition-colors"
                       >
                         Beater
                       </a>

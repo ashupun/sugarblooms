@@ -1,11 +1,11 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
 import { businessSchema, websiteSchema } from "./schema";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sugarblooms.co.uk"),
@@ -13,38 +13,38 @@ export const metadata: Metadata = {
     google: "google-site-verification",
   },
   title:
-    "Sugar Blooms | Handcrafted Cupcakes London – Boutique Pink Cupcake Bakery",
+    "Sugar Blooms | Handcrafted Cupcakes Derry – Boutique Pink Cupcake Bakery",
   description:
-    "Sugar Blooms is a London-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic. Order freshly baked cupcakes for birthdays, weddings, and special occasions in London.",
+    "Sugar Blooms is a Derry-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic. Order freshly baked cupcakes for birthdays, weddings, and special occasions in Northern Ireland.",
   keywords: [
-    "London cupcakes",
+    "Derry cupcakes",
     "handcrafted cupcakes",
-    "bakery London",
-    "custom cupcakes London",
+    "bakery Derry",
+    "custom cupcakes Derry",
     "Sugar Blooms",
-    "order cupcakes online London",
-    "birthday cupcakes London",
-    "wedding cupcakes London",
-    "cupcake delivery London",
+    "order cupcakes online Derry",
+    "birthday cupcakes Derry",
+    "wedding cupcakes Derry",
+    "cupcakes Northern Ireland",
     "boutique cupcakes",
     "artisan cupcakes",
     "special occasion cupcakes",
-    "best cupcakes London",
-    "North London bakery",
-    "custom cake orders London",
+    "best cupcakes Derry",
+    "Northern Ireland bakery",
+    "custom cake orders Derry",
     "sugarblooms",
     "sugarbloomsbakery",
-    "pink cupcakes London",
-    "luxury cupcakes London",
+    "pink cupcakes Derry",
+    "luxury cupcakes Northern Ireland",
   ],
   alternates: {
     canonical: "https://sugarblooms.co.uk",
   },
   openGraph: {
     title:
-      "Sugar Blooms | Handcrafted Cupcakes London – Boutique Pink Cupcake Bakery",
+      "Sugar Blooms | Handcrafted Cupcakes Derry – Boutique Pink Cupcake Bakery",
     description:
-      "Sugar Blooms is a London-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
+      "Sugar Blooms is a Derry-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
     url: "https://sugarblooms.co.uk",
     siteName: "Sugar Blooms",
     locale: "en_GB",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
         url: "/website-banner.png",
         width: 1200,
         height: 630,
-        alt: "Sugar Blooms - Handcrafted Cupcakes London",
+        alt: "Sugar Blooms - Handcrafted Cupcakes Derry",
       },
       {
         url: "/sugarblooms.png",
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Sugar Blooms | Handcrafted Cupcakes London – Boutique Pink Cupcake Bakery",
+      "Sugar Blooms | Handcrafted Cupcakes Derry – Boutique Pink Cupcake Bakery",
     description:
-      "Sugar Blooms is a London-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
+      "Sugar Blooms is a Derry-based bakery specialising in handcrafted cupcakes, custom orders, and sweet treats made with love, sprinkles, and a touch of magic.",
     images: ["/website-banner.png"],
   },
   icons: {

@@ -83,15 +83,15 @@ export default function AdminFAQPage() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20">
+    <div className="min-h-screen pt-40 pb-20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-8 font-serif">
+          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8">
             FAQ Management
           </h1>
 
-          <div className="bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl p-6">
-            <h2 className="text-xl font-bold text-pink-600 mb-6">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-6">
               Question Submissions
             </h2>
 
@@ -109,10 +109,10 @@ export default function AdminFAQPage() {
                 <TableBody>
                   {submissions.map((submission) => (
                     <TableRow key={submission.id}>
-                      <TableCell className="text-sm text-pink-700">
+                      <TableCell className="text-sm text-gray-700">
                         {new Date(submission.createdAt).toLocaleDateString()}
                       </TableCell>
-                      <TableCell className="text-sm text-pink-700">
+                      <TableCell className="text-sm text-gray-700">
                         {submission.name}
                       </TableCell>
                       <TableCell className="text-sm text-pink-700 max-w-md">
@@ -179,13 +179,13 @@ export default function AdminFAQPage() {
           {selectedSubmission && (
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-pink-600">
+                <label className="text-sm font-medium text-gray-700">
                   Question
                 </label>
-                <p className="text-pink-700">{selectedSubmission.question}</p>
+                <p className="text-gray-700">{selectedSubmission.question}</p>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-pink-600">
+                <label className="text-sm font-medium text-gray-700">
                   Your Answer
                 </label>
                 <Textarea
@@ -212,7 +212,7 @@ export default function AdminFAQPage() {
             <Button
               onClick={handleApprove}
               disabled={!answer}
-              className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white"
+              className="bg-pink-600 hover:bg-pink-700 text-white rounded-full"
             >
               Approve & Add to FAQs
             </Button>

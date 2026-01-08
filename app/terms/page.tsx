@@ -7,11 +7,11 @@ export default function TermsPage() {
         <title>Terms and Conditions | Sugar Blooms</title>
         <meta
           name="description"
-          content="Read the terms and conditions for Sugar Blooms, London's premier cupcake bakery."
+          content="Read the terms and conditions for Sugar Blooms, Derry's premier cupcake bakery."
         />
         <meta
           name="keywords"
-          content="terms, conditions, Sugar Blooms, London bakery"
+          content="terms, conditions, Sugar Blooms, Derry bakery, Northern Ireland"
         />
       </Head>
       <div>

@@ -34,26 +34,19 @@ export default function CupcakesPage() {
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-20">
+    <div className="min-h-screen pt-40 pb-20">
       <section className="pt-8 pb-18 px-4 relative">
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="mb-6">
-              <h1 className="text-3xl md:text-4xl font-bold text-pink-600 font-serif">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Our Cake Selection
               </h1>
             </div>
-            <p className="text-base md:text-lg text-pink-700/80 mb-8 font-light leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 mb-8 font-light leading-relaxed max-w-2xl mx-auto">
               Our 6" cakes are perfect for any celebration, crafted with the
               finest ingredients and a touch of love.
             </p>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent flex-1 max-w-20" />
-              <span className="text-pink-500 text-sm font-medium">
-                Made Fresh Daily in Our Home Kitchen
-              </span>
-              <div className="h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent flex-1 max-w-20" />
-            </div>
           </div>
         </div>
       </section>
@@ -61,10 +54,10 @@ export default function CupcakesPage() {
         {cakeCategories.map((category, categoryIndex) => (
           <div key={categoryIndex} className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-pink-600 font-serif mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {category.title}
               </h2>
-              <p className="text-pink-500 italic mb-4">
+              <p className="text-gray-500 italic mb-4">
                 {category.description}
               </p>
             </div>
@@ -73,11 +66,11 @@ export default function CupcakesPage() {
               {category.cakes.map((cake, index) => (
                 <Card
                   key={index}
-                  className="bg-white/90 backdrop-blur-sm border-3 border-pink-200 rounded-3xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 hover:-translate-y-3 relative overflow-hidden"
+                  className="bg-white border border-gray-100 rounded-xl shadow-soft hover:shadow-soft-md transition-all relative overflow-hidden"
                 >
                   {cake.popular && (
                     <div className="absolute bottom-64 left-4 z-10">
-                      <Badge className="bg-pink-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                      <Badge className="bg-pink-600 text-white text-xs font-medium px-3 py-1 rounded-full">
                         <Star className="w-3 h-3 mr-1 fill-white" />
                         Popular
                       </Badge>
@@ -91,19 +84,18 @@ export default function CupcakesPage() {
                         alt={cake.name}
                         width={400}
                         height={300}
-                        className="w-full h-64 object-cover transition-transform hover:scale-110"
+                        className="w-full h-64 object-cover transition-transform hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-pink-50/80 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
-                      <div className="absolute top-3 right-3 bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg transition-colors">
+                      <div className="absolute top-3 right-3 bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
                         {cake.price}
                       </div>
                     </div>
 
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-pink-600 mb-2 font-serif">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
                         {cake.name}
                       </h3>
-                      <p className="text-pink-700 text-sm mb-4 leading-relaxed">
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                         {cake.description}
                       </p>
 
@@ -111,7 +103,7 @@ export default function CupcakesPage() {
                         {cake.flavors.map((flavor, flavorIndex) => (
                           <span
                             key={flavorIndex}
-                            className="text-xs bg-pink-100 text-pink-600 px-3 py-1.5 rounded-full border border-pink-200 font-medium hover:bg-pink-200 transition-colors"
+                            className="text-xs bg-gray-50 text-gray-600 px-3 py-1.5 rounded-full border border-gray-100 font-medium"
                           >
                             {flavor}
                           </span>
@@ -119,7 +111,7 @@ export default function CupcakesPage() {
                       </div>
 
                       <Button
-                        className="w-full bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold rounded-full py-3 shadow-lg transform hover:scale-105 transition-all"
+                        className="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium rounded-full py-3 transition-colors"
                         asChild
                       >
                         <a

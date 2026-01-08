@@ -26,7 +26,7 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#ec4899", // pink-500
+          DEFAULT: "#9e2b5e",
           foreground: "#ffffff",
         },
         secondary: {
@@ -54,20 +54,20 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         pink: {
-          50: "#fdf2f8",
-          100: "#fce7f3",
-          200: "#fbcfe8",
-          300: "#ffabbf",
-          400: "#f472b6",
-          500: "#ec4899",
-          600: "#db2777",
-          700: "#be185d",
-          800: "#9d174d",
-          900: "#831843",
+          50: "#fdf5f7",
+          100: "#fceaef",
+          200: "#f9d5df",
+          300: "#f9b8c6",
+          400: "#e8799c",
+          500: "#c75480",
+          600: "#9e2b5e",
+          700: "#862450",
+          800: "#6e1d42",
+          900: "#5a1836",
         },
         rose: {
-          50: "#fff1f2",
-          100: "#ffe4e6",
+          50: "#fff5f7",
+          100: "#ffe8ed",
           200: "#fecdd3",
           300: "#fda4af",
           400: "#fb7185",
@@ -82,6 +82,11 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        soft: "0 2px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -4px rgba(0, 0, 0, 0.02)",
+        "soft-md": "0 4px 20px -4px rgba(0, 0, 0, 0.06), 0 8px 16px -8px rgba(0, 0, 0, 0.03)",
+        "soft-lg": "0 10px 40px -10px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.02)",
       },
       keyframes: {
         "accordion-down": {
@@ -100,13 +105,17 @@ const config: Config = {
           "0%": { transform: "translateY(-8px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "menu-appear": "menu-appear 0.2s ease-out",
-        "menu-item-appear":
-          "menu-item-appear 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        "menu-item-appear": "menu-item-appear 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        "fade-in": "fade-in 0.4s ease-out",
       },
     },
   },

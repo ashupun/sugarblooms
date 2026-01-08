@@ -66,18 +66,18 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen pt-48 pb-20">
+    <div className="min-h-screen pt-40 pb-20">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl border-2 border-pink-200 p-6 md:p-8">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
             <div className="flex justify-between items-center mb-8">
-              <h1 className="text-3xl font-bold text-pink-600 font-serif">
+              <h1 className="text-3xl font-semibold text-gray-900">
                 Admin Dashboard
               </h1>
               <Button
                 onClick={handleLogout}
                 variant="outline"
-                className="border-pink-200 text-pink-600 hover:text-pink-700 hover:bg-pink-50"
+                className="border-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-50"
               >
                 Logout
               </Button>
@@ -85,21 +85,21 @@ export default function AdminDashboard() {
 
             {/* Quick Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-pink-50 rounded-xl p-4">
-                <h3 className="text-pink-600 font-medium mb-2">Total Orders</h3>
-                <p className="text-2xl font-bold text-pink-700">0</p>
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                <h3 className="text-gray-600 font-medium mb-2">Total Orders</h3>
+                <p className="text-2xl font-semibold text-gray-900">0</p>
               </div>
-              <div className="bg-pink-50 rounded-xl p-4">
-                <h3 className="text-pink-600 font-medium mb-2">
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                <h3 className="text-gray-600 font-medium mb-2">
                   Pending Orders
                 </h3>
-                <p className="text-2xl font-bold text-pink-700">0</p>
+                <p className="text-2xl font-semibold text-gray-900">0</p>
               </div>
-              <div className="bg-pink-50 rounded-xl p-4">
-                <h3 className="text-pink-600 font-medium mb-2">
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                <h3 className="text-gray-600 font-medium mb-2">
                   Today's Revenue
                 </h3>
-                <p className="text-2xl font-bold text-pink-700">£0</p>
+                <p className="text-2xl font-semibold text-gray-900">£0</p>
               </div>
             </div>
 
@@ -107,7 +107,7 @@ export default function AdminDashboard() {
             <div className="space-y-4">
               <Button
                 onClick={() => setShowChangePassword(!showChangePassword)}
-                className="w-full md:w-auto border-pink-200 text-pink-600 hover:text-pink-700 hover:bg-pink-50"
+                className="w-full md:w-auto border-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-50"
                 variant="outline"
               >
                 Change Password
@@ -116,7 +116,7 @@ export default function AdminDashboard() {
               {showChangePassword && (
                 <form
                   onSubmit={handlePasswordChange}
-                  className="mt-4 bg-pink-50 rounded-xl p-6 space-y-4"
+                  className="mt-4 bg-gray-50 rounded-xl p-6 space-y-4 border border-gray-100"
                 >
                   {passwordError && (
                     <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700">
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
                   <div className="space-y-2">
                     <label
                       htmlFor="currentPassword"
-                      className="block text-sm font-medium text-pink-600"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Current Password
                     </label>
@@ -146,7 +146,7 @@ export default function AdminDashboard() {
                           currentPassword: e.target.value,
                         })
                       }
-                      className="border-pink-200 focus:border-pink-400"
+                      className="border-gray-200 focus:border-pink-400"
                       required
                     />
                   </div>
@@ -154,7 +154,7 @@ export default function AdminDashboard() {
                   <div className="space-y-2">
                     <label
                       htmlFor="newPassword"
-                      className="block text-sm font-medium text-pink-600"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       New Password
                     </label>
@@ -168,7 +168,7 @@ export default function AdminDashboard() {
                           newPassword: e.target.value,
                         })
                       }
-                      className="border-pink-200 focus:border-pink-400"
+                      className="border-gray-200 focus:border-pink-400"
                       required
                     />
                   </div>
@@ -176,7 +176,7 @@ export default function AdminDashboard() {
                   <div className="space-y-2">
                     <label
                       htmlFor="confirmPassword"
-                      className="block text-sm font-medium text-pink-600"
+                      className="block text-sm font-medium text-gray-700"
                     >
                       Confirm New Password
                     </label>
@@ -190,7 +190,7 @@ export default function AdminDashboard() {
                           confirmPassword: e.target.value,
                         })
                       }
-                      className="border-pink-200 focus:border-pink-400"
+                      className="border-gray-200 focus:border-pink-400"
                       required
                     />
                   </div>
@@ -198,7 +198,7 @@ export default function AdminDashboard() {
                   <div className="flex gap-2">
                     <Button
                       type="submit"
-                      className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-medium"
+                      className="bg-pink-600 hover:bg-pink-700 text-white font-medium rounded-full"
                     >
                       Change Password
                     </Button>
@@ -206,7 +206,7 @@ export default function AdminDashboard() {
                       type="button"
                       onClick={() => setShowChangePassword(false)}
                       variant="outline"
-                      className="border-pink-200 text-pink-600 hover:text-pink-700 hover:bg-pink-50"
+                      className="border-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-50 rounded-full"
                     >
                       Cancel
                     </Button>
